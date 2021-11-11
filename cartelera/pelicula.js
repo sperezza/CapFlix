@@ -29,7 +29,7 @@ function filtrar(contPage) {
         .then(response => response.json())
 
         .then(data => {
-            totalPage = data.totalResults / 10;
+            totalPage = Math.ceil(data.totalResults / 10);
             (totalPage>1)?document.getElementById("buttonPage").style.visibility="visible":document.getElementById("buttonPage").style.visibility="hidden";
 
             document.getElementById("aki").innerHTML = "";
@@ -37,8 +37,9 @@ function filtrar(contPage) {
                 console.log(data)
                 let poster = '';
                 (data.Search[i].Poster == 'N/A') ? poster = "cartelera.jpg" : poster = data.Search[i].Poster;
-                document.getElementById("aki").innerHTML += '<br><div id="aki"' + i + ' class="col-sm-12 col-md-4 mb-3 d-flex"><div class="card text-center border border-dark" ><div class="card-header bg-warning">' + data.Search[i].Title + '</div><div class="card-body"> <img src="' + poster + '" onclick="buscar(\'' + data.Search[i].Title + '\')" width="100%" /></div><div class="card-footer bg-ligth">' + data.Search[i].Year + '</div></div></div><br>';
+                document.getElementById("aki").innerHTML += '<br><div id="aki"' + i + ' class="col-sm-12 col-md-4 mb-3 d-flex"><div class="card text-center border border-dark" ><div class="card-header bg-warning">' + data.Search[i].Title + '</div><div class="card-body"> <img id="imagen" src="' + poster + '" onclick="buscar(\'' + data.Search[i].Title + '\')" width="100%" /></div><div class="card-footer bg-ligth">' + data.Search[i].Year + '</div></div></div><br>';
                 document.getElementById("cartel").style.display = "none";
+                document.getElementById("numPage").innerHTML=contPage;
             }
 
         })
@@ -84,6 +85,17 @@ function prevPage() {
         contPage--;
         filtrar(contPage);
     }
+}
+
+function lastPage(){
+    filtrar(totalPage);
+    contPage=totalPage;
+    console.log(contPage)
+}
+function firstPage(){
+    contPageCero();
+    filtrar(contPage);
+    console.log(contPage)
 }
 function contPageCero() {
     contPage = 1;
