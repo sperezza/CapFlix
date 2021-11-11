@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<HTML>
+
+<HEAD>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="pelicula.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="app.css" type="text/css" />
+
+</HEAD>
+
+<BODY>
+    <div>
+        <nav class="navbar navbar-dark bg-dark mb-5">
+            <div class="container-fluid">
+                <a class="navbar-brand" href=""><i class="fas fa-film"></i> FilmsActionsY+</a>
+            </div>
+        </nav>
+        <div class="container sticky-top">
+            <div class="row justify-content-center">
+
+                <div class="col-sm-3 col-md-3 col-3 ">
+                    <select class="form-select" name="formulario" id="selector" onchange="elegir()">
+                        <option value="movie" selected>pelicula</option>
+                        <option value="series">serie</option>                    
+                    </select>
+                </div>
+   
+                <div class="col-sm-5 col-md-6 col-12">
+                    <div class="input-group mb-3  ">
+                        <input type="text" class="form-control" id="buscador" placeholder="Buscar pelicula..."
+                            aria-label="Buscar película..." aria-describedby="button-search2">
+                        <button class="btn btn-info" type="button" onclick="filtrar(1) , contPageCero()"
+                            id="button-search2"><i class="fas fa-search"></i> Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="container list" id="contenedor">
+            <div class="row justify-content-center" id="cartel">
+                <div class="col-10 d-flex mt-3">
+                    <img src="cartelera2.jpg" class="img-fluid">
+                </div>
+            </div>
+            <div class="row" id="aki">
+            </div>
+        </div>
+        <div id="buttonPage" style="visibility: hidden;" class="container d-flex justify-content-center my-3">
+            
+        <button type="button" class="btn btn-info m-3" onclick="prevPage()"><i class="fas fa-chevron-left"></i></button>
+        <button type="button" class="btn btn-info m-3" onclick="nextPage()"><i class="fas fa-chevron-right"></i></button>
+    </div>
+        <div id="modal" class="modal" style="display:none;" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="title"></h5>
+                        <button onclick="closeModal()" type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="plot"></p>
+                        <p id="year"></p>
+                        <p id="actores"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button onclick="closeModal()" type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="bg-dark p-2 ">
+        <div class="container">
+            <ul class="foote_bottom_ul_amrc">
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Services</a></li>
+            <li><a href="">Pricing</a></li>
+            <li><a href="">Blog</a></li>
+            <li><a href="">Contact</a></li>
+            </ul>
+            <!--foote_bottom_ul_amrc ends here-->
+            <p class="text-center small">Copyright @2021 | Designed by mdlks & sperezza</p>
+            
+            <ul class="social_footer_ul">
+            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+            <li><a href=""><i class="fab fa-linkedin"></i></a></li>
+            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+            </ul>
+            <!--social_footer_ul ends here-->
+            </div>
+        </footer>
+        
+</BODY>
+
+</HTML>
